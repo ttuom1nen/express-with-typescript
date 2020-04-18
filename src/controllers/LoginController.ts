@@ -1,16 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { get, controller, use, bodyValidator, post } from "./decorators";
-
-// Logger middleware:
-function logger(req: Request, res: Response, next: NextFunction) {
-  console.log("Request was made!");
-  next();
-}
+import { get, controller, bodyValidator, post } from "./decorators";
 
 @controller("/auth")
 class LoginController {
   @get("/login")
-  @use(logger)
   getLogin(req: Request, res: Response): void {
     res.send(`
         <form method="POST">
